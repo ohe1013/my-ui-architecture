@@ -7,6 +7,7 @@ type DropdownContextType<T> = {
   updateSelecteItem: (item: T) => void;
   getAriaAttributes: () => unknown;
   dropdownRef: RefObject<HTMLElement>;
+  setSelectIdx: (idx: number) => void;
 };
 function createDropdownContext<T>() {
   return createContext<DropdownContextType<T> | null>(null);

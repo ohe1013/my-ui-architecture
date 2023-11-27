@@ -2,6 +2,7 @@ import DropdownMenu from "./DropdownMenu";
 import Trigger from "./Trigger";
 import { useDropdown } from "../hooks/useDropdown";
 import { PressButton } from "./PressButton";
+import HeadlessDropdownUse from "./HeadlessDropdownUse";
 
 export interface PhotoItem {
   albumId: number;
@@ -32,7 +33,7 @@ const Dropdown = ({ items }: DropdownProps) => {
 
   return (
     <div className="dropdown">
-      <input onKeyDown={handleKeyDown}></input>
+      {/* <input onKeyDown={handleKeyDown}></input>
       <Trigger
         label={selectedItem ? selectedItem?.title : "Select a Item"}
         onClick={toggleDropdown}
@@ -44,7 +45,8 @@ const Dropdown = ({ items }: DropdownProps) => {
           items={items}
           onItemClick={updateSelectedItem}
         />
-      )}
+      )} */}
+      <HeadlessDropdownUse items={items}></HeadlessDropdownUse>
     </div>
   );
 };

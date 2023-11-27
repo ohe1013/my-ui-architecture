@@ -1,12 +1,12 @@
 import { DropdownContext, useDropdownContext } from "../context/dropdown";
 import { useDropdown } from "../hooks/useDropdown";
-import { RefObject } from "react";
+import { RefObject, ReactNode, ElementType, ComponentProps } from "react";
 
 const HeadlessDropdown = <T extends { title: string }>({
   children,
   items,
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
   items: T[];
 }) => {
   const {
@@ -17,6 +17,7 @@ const HeadlessDropdown = <T extends { title: string }>({
     updateSelectedItem,
     getAriaAttributes,
     dropdownRef,
+    setSelectIdx,
   } = useDropdown(items);
   return (
     <DropdownContext.Provider
@@ -28,6 +29,7 @@ const HeadlessDropdown = <T extends { title: string }>({
         updateSelecteItem: () => updateSelectedItem,
         dropdownRef,
         getAriaAttributes,
+        setSelectIdx,
       }}
     >
       <div
@@ -40,11 +42,52 @@ const HeadlessDropdown = <T extends { title: string }>({
   );
 };
 
-HeadlessDropdown.Trigger = function Trigger({
+HeadlessDropdown.Trigger = function Trigger<Props extends ElementType>({
   as: Component = "button",
   ...props
-}) {
+}: {
+  as?: Props;
+} & ComponentProps<Props>) {
   const { toggleDown } = useDropdownContext();
   return <Component tabIndex={0} onClick={toggleDown} {...props} />;
+};
+HeadlessDropdown.List = function List<Props extends ElementType>({
+  as: Component = "ul",
+  ...props
+}: {
+  as?: Props;
+} & ComponentProps<Props>) {
+  const { isOpen } = useDropdownContext();
+
+  return isOpen ? <Component {...props} role="listbox" tabIndex={0} /> : null;
+};
+
+HeadlessDropdown.Option = function Option<T extends { title: string }>({
+  as: Component = "li",
+  index,
+  item,
+  ...props
+}: {
+  as: ElementType;
+  index: number;
+  item: T;
+}) {
+  const { selectedIdx, setSelectIdx } = useDropdownContext();
+
+  return (
+    <Component
+      role="option"
+      aria-selected={index === selectedIdx}
+      style={{
+        backgroundColor: index === selectedIdx ? "black" : "white",
+        color: index === selectedIdx ? "white" : "black",
+      }}
+      key={index}
+      onClick={() => setSelectIdx(index)}
+      {...props}
+    >
+      {item.title}
+    </Component>
+  );
 };
 export default HeadlessDropdown;

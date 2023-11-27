@@ -51,5 +51,6 @@ export const useDropdown = <T>(items: DropdownItem<T>[]) => {
     updateSelectedItem,
     selectIdx,
     dropdownRef,
+    setSelectIdx,
   };
 };
