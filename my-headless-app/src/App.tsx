@@ -1,5 +1,6 @@
 import Dropdown, { TodoItem } from "./components/Dropdown";
 import { useQuery } from "@tanstack/react-query";
+import MyListboxVue from "./pages/MyListboxVue";
 
 // const fetchPosts: () => Promise<Array<Item>> = () =>
 //   fetch("https://jsonplaceholder.typicode.com/photos").then((res) =>
@@ -17,7 +18,12 @@ function App() {
     staleTime: Infinity,
     gcTime: Infinity,
   });
-  return <>{data && data?.length > 0 && <Dropdown items={data} />}</>;
+  return (
+    <>
+      <MyListboxVue />
+      {data && data?.length > 0 && <Dropdown items={data} />}
+    </>
+  );
 }
 
 export default App;

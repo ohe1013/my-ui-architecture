@@ -1,7 +1,3 @@
-import DropdownMenu from "./DropdownMenu";
-import Trigger from "./Trigger";
-import { useDropdown } from "../hooks/useDropdown";
-import { PressButton } from "./PressButton";
 import HeadlessDropdownUse from "./HeadlessDropdownUse";
 
 export interface PhotoItem {
@@ -22,15 +18,6 @@ type DropdownProps = {
   items: TodoItem[];
 };
 const Dropdown = ({ items }: DropdownProps) => {
-  const {
-    isOpen,
-    selectedItem,
-    handleKeyDown,
-    toggleDropdown,
-    selectIdx,
-    updateSelectedItem,
-  } = useDropdown(items);
-
   return (
     <div className="dropdown">
       {/* <input onKeyDown={handleKeyDown}></input>

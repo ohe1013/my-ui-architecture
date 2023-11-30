@@ -1,12 +1,7 @@
 import { useState, useRef } from "react";
-export interface DropdownItem<T> {
-  title: string;
-}
-export const useDropdown = <T>(items: DropdownItem<T>[]) => {
+export const useDropdown = <T extends { title: string }>() => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedItem, updateSelectedItem] = useState<DropdownItem<T> | null>(
-    null
-  );
+  const [selectedItem, updateSelectedItem] = useState<T | null>(null);
 
   const [selectIdx, setSelectIdx] = useState<number>(-1);
   const getAriaAttributes = () => ({
