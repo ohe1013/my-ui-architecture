@@ -7,10 +7,10 @@
  *
  */
 
-const todoKeys = {
+export const todoKeys = {
   all: ["todos"] as const,
   lists: () => [...todoKeys.all, "list"] as const,
   list: (filter: string) => [...todoKeys.lists(), { filter }] as const,
   details: () => [...todoKeys.all, "detail"] as const,
-  detail: (id: number) => [...todoKeys.details(), id] as const,
+  detail: (id: string) => [...todoKeys.details(), id] as const,
 };
