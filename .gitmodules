@@ -1,0 +1,3 @@
+[submodule "my-ui-architecture"]
+	path = my-ui-architecture
+	url = http://github.com/ohe1013/my-ui-architecture
