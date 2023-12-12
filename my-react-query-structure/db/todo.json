@@ -57,7 +57,11 @@
     {
       "userId": 1,
       "id": 10,
+<<<<<<< HEAD
       "title": "illo est ratione doloremque quia maiores aut323232",
+=======
+      "title": "illo est ratione doloremque quia maiores aut3232",
+>>>>>>> 7fb145b49702fa517ab07cf1fdd130d7493af98f
       "completed": true
     },
     {

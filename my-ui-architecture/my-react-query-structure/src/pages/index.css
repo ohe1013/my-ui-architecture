@@ -1,0 +1,16 @@
+p {
+  margin: 0;
+  padding: 0;
+}
+button {
+  padding: 1px;
+  background-color: black;
+  color: white;
+  border: 1px solid white;
+  border-radius: 20%;
+  cursor: pointer;
+}
+
+input {
+  width: 300px;
+}

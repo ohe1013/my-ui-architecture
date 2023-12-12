@@ -10,7 +10,11 @@ interface TodoDetailProps {
 
 const TodoDetail: React.FC<TodoDetailProps> = () => {
   const { id } = useParams();
+<<<<<<< HEAD
   const { status, data } = useQuery({
+=======
+  const { status, data, error } = useQuery({
+>>>>>>> 7fb145b49702fa517ab07cf1fdd130d7493af98f
     queryKey: todoKeys.detail(id),
     queryFn: () => getTodoDetail(id),
     staleTime: Infinity,
