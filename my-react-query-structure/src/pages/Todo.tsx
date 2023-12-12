@@ -1,3 +1,4 @@
+import { TodoItem } from "../components/todo/TodoItem";
 import useTodo from "../hooks/todo";
 import "./index.css";
 import { Link } from "react-router-dom";
@@ -20,7 +21,12 @@ export default function Todo() {
       {data.map((item: { id: string; title: string }) => {
         return (
           <div key={item.id} style={{ display: "flex" }}>
-            {checkedIdList[item.id] ? (
+            <TodoItem
+              isInput={!!checkedIdList[item.id]}
+              onKeyDown={changeTodo}
+              defaultItem={item}
+            />
+            {/* {checkedIdList[item.id] ? (
               <input
                 onChange={(e) => {
                   setInputValues((prevInputValues) => ({
@@ -38,7 +44,7 @@ export default function Todo() {
               <Link to={"detail/" + item.id}>
                 <p key={"paragraph_" + item.id}>{item.title}</p>
               </Link>
-            )}
+            )} */}
             <button onClick={() => handleCheckList(item.id)}>click</button>
           </div>
         );
